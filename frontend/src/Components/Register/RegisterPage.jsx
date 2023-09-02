@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; 
+import './RegisterPage.css'; 
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const navigate = useNavigate();
 
     const [userName, setuserName] = useState("");
@@ -19,7 +19,7 @@ const LoginPage = () => {
     };
     const submit = async () => {
       const userData={userName,password};
-      const response= await fetch('/user/login',{
+      const response= await fetch('/user/register',{
         method:"POST",
         headers:{
             'Content-Type':"application/json",
@@ -28,11 +28,9 @@ const LoginPage = () => {
         body: JSON.stringify(userData)
       })
       const data = await response.json()
-      console.log(data.User);
-      if(data.User){
-        localStorage.setItem('user',JSON.stringify(data.User.isUser))
-        localStorage.setItem('token',JSON.stringify(data.token))
-        navigate("/addproduct")
+      console.log(data.user);
+      if(data.user){
+        navigate("/login")
       }
       
     }
@@ -42,9 +40,8 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <input
-        
           type="username"
           name="userName"
           placeholder="Username"
@@ -52,21 +49,16 @@ const LoginPage = () => {
           onChange={textchange}
         />
         <input
-        required
           type="Password"
           name="password"
           placeholder="Password"
           value={password}
           onChange={textchange}
         />
-        <button onClick={submit}>Signin</button>
-        <div>
-          <h5>---------------- New to Estore ----------------</h5>
-        </div>
-        <button className='register' onClick={()=>navigate("/Register")}>Create your Estore account</button>
+        <button onClick={submit}>Register</button>
         </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

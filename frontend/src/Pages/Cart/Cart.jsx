@@ -3,11 +3,14 @@ import cartcontext from '../../context/Cartcontext';
 import { useContext } from 'react';
 import { Button, Container, Stack } from '@mui/material';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 export default function Cart() {
+  const navigate = useNavigate();
     const CartItem=useContext(cartcontext);
   const {cartitem}=CartItem
   
   const handleorder = async () => {
+
     const productdata = { name, price: +price, image, description };
     const response = await fetch("/products/add", {
       method: "POST",

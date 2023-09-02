@@ -10,6 +10,7 @@ import Navbar from "./Pages/Home/Navbar";
 import { ProductContainer } from "./context/ProductContext";
 import LoginPage from "./Components/Login/LoginPage";
 import Editprod from "./Pages/EditProduct/Editprod";
+import RegisterPage from "./Components/Register/RegisterPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/Products/Cart" element={<Cart />} />
               <Route path="/addproduct" element={<Addprod />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
 
             </Routes>
           </ProductContainer>

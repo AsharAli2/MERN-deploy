@@ -94,7 +94,7 @@ if(!user){
           variant="outlined"
         />
         <Button fullWidth onClick={submit} variant="contained">
-          Contained
+          Add Product
         </Button>
       </Container>
     </>
